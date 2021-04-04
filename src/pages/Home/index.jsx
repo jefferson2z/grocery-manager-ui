@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyledHome } from './styles';
 import {
   AddProduct,
@@ -9,13 +9,21 @@ export const Home = () => {
   const [name, setName] = useState('');
   const [products, setProducts] = useState([]);
 
-  const handleAddProduct = async () => {
-    await AddProduct(name);
-
+  const updateProducsList = async () => {
     const allProducts = await getAllProducts();
 
     setProducts(allProducts);
   };
+
+  const handleAddProduct = async () => {
+    await AddProduct(name);
+
+    updateProducsList();
+  };
+
+  useEffect(() => {
+    updateProducsList();
+  }, []);
 
   return (
     <StyledHome>
