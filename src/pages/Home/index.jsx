@@ -27,8 +27,6 @@ export const Home = () => {
 
   return (
     <StyledHome>
-      <h1>Home Page</h1>
-
       <p>Add a new Product</p>
 
       <div>

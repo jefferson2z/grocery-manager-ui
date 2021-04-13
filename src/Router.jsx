@@ -1,9 +1,10 @@
+import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 
 export const Router = () => {
   return (
-    <div>
+    <Layout>
       <Home />
-    </div>
+    </Layout>
   );
 };
