@@ -27,22 +27,24 @@ export const Home = () => {
 
   return (
     <StyledHome>
-      <p>Add a new Product</p>
+      <h2>Add a new Product</h2>
 
-      <div>
-        <label for="name">Name: </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
-        />
+      <div className="product-input-container">
+        <div>
+          <label for="name">Name: </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+          />
+        </div>
+
+        <button onClick={handleAddProduct}>Add</button>
       </div>
-
-      <button onClick={handleAddProduct}>Add</button>
 
       <ul>
         {products.length ? (
