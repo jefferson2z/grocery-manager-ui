@@ -25,6 +25,10 @@ export const Home = () => {
     updateProducsList();
   }, []);
 
+  const handleDeleteProduct = () => {
+    window.alert('product deleted');
+  };
+
   return (
     <StyledHome>
       <h2>Add a new Product</h2>
@@ -48,7 +52,14 @@ export const Home = () => {
 
       <ul>
         {products.length ? (
-          products.map((product) => <li>{product.name}</li>)
+          products.map((product) => (
+            <li>
+              {product.name}{' '}
+              <button className="delete-button" onClick={handleDeleteProduct}>
+                X
+              </button>
+            </li>
+          ))
         ) : (
           <div>No Products added</div>
         )}

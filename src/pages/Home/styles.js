@@ -13,7 +13,19 @@ export const StyledHome = styled.div`
     display: flex;
   }
 
+  ul {
+    max-width: 300px;
+    padding: 0;
+  }
+
+  .delete-button {
+    margin-left: auto;
+  }
+
   li {
     list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
   }
 `;
