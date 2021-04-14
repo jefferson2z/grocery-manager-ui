@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { StyledHome } from './styles';
 import {
-  AddProduct,
+  addProduct,
   getAllProducts,
+  deleteProduct,
 } from '../../services/api/products/products';
 
 export const Home = () => {
@@ -16,7 +17,7 @@ export const Home = () => {
   };
 
   const handleAddProduct = async () => {
-    await AddProduct(name);
+    await addProduct(name);
 
     updateProducsList();
   };
@@ -25,8 +26,14 @@ export const Home = () => {
     updateProducsList();
   }, []);
 
-  const handleDeleteProduct = () => {
-    window.alert('product deleted');
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await deleteProduct(productId);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      updateProducsList();
+    }
   };
 
   return (
@@ -55,7 +62,10 @@ export const Home = () => {
           products.map((product) => (
             <li>
               {product.name}{' '}
-              <button className="delete-button" onClick={handleDeleteProduct}>
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteProduct(product.id)}
+              >
                 X
               </button>
             </li>
